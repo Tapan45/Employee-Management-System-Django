@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+       
+        .nav-link:hover {
+            
+              color: red!important; /* Change to your desired text color on hover */
+        } 
+        .nav-link{
+            
+            font-weight: bold !important;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+         
+            font-size: 1.3rem!important;
+        }
+
+        
+    </style>
+    <meta charset="UTF-8">
+    <title>Employee Salary Form</title>
+    <!-- Bootstrap CSS -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /* Optional: Add custom styles here */
+    </style>
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg bg-color py-4 pt-lg-5">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="#">
+                <img src="https://gvitechnology.com/images/logo.png" style="width: 100px; height: 50px;" alt="Logo">
+            </a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler"
+                    data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link text-primary dropdown-toggle" href="#" role="button" id="navbarDropdownMIS"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                MIS
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMIS">
+                                <li><a class="dropdown-item" href=""></a></li>
+                                <li><a class="dropdown-item" href=""></a></li>
+                                <li><a class="dropdown-item" href=""></a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+            
+                    <li class="nav-item ms-3">
+                        <div class="dropdown">
+                            <a class="nav-link text-primary dropdown-toggle" href="#" role="button" id="navbarDropdownPayRoll"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Pay Roll
+                            </a>
+               
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownPayRoll">
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-regular fa-calendar-days"></i> Holidays</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'create_holidays' %}">Create Holidays</a></li>
+                                        <li><a class="dropdown-item" href="#">Holidays List</a></li>
+                                        <li><a class="dropdown-item" href="#">Employee Holidays</a></li>
+                                        <!-- Add more options as needed -->
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                        <i class="fas fa-light fa-stopwatch"></i> Time Sheets
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'attendance_process' %}">Process Attendance</a></li>
+                                        <li><a class="dropdown-item" href="#">Attendance Approval</a></li>
+                                        <!-- Add more options as needed -->
+                                    </ul>
+                                </li>
+                                
+                            
+                                <li><a class="dropdown-item" href="">Salary</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li class="nav-item ms-3"> 
+                        <div class="dropdown">
+                            <a class="nav-link text-primary dropdown-toggle" href="#" role="button" id="navbarDropdownEmployees"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-users"></i> Employees
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownEmployees">
+                                <li><a class="dropdown-item" href="{% url 'emp_det' %}"><i class="fa-solid fa-user-plus"></i> Create Employee</a></li>
+                                <li><a class="dropdown-item" href="{% url 'empemployee_list' %}"><i class="fa-solid fa-list"></i> Employee List</a></li>
+                                <li><a class="dropdown-item" href="{% url 'add_salary' %}"><i class="fa-solid fa-comments-dollar"></i> Employee Salary</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                  
+                    <li class="nav-item ms-3"> 
+                        <div class="dropdown">
+                            <a class="nav-link text-primary dropdown-toggle" href="#" role="button" id="navbarDropdownReports"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Reports
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownReports">
+                                <li><a class="dropdown-item" href="">Employee Report</a></li>
+                                <li><a class="dropdown-item" href="">Holidays Report</a></li>
+                                <li><a class="dropdown-item" href="">Salary Report</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                   
+    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class=" d-flex justify-content-between align-items-center">
+                            <span class="text-center">Salary - Employee</span>
+                            <a href="{% url 'view_salary' %}">View Salaries</a>
+                            
+                        </div>
+                        <form action="{% url 'add_salary' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <div class="col-md-6">
+                            <label for="employeeName" class="form-label">Employee Name</label>
+                                <select class="form-control" id="employeeName" name="employeeName" required>
+                                    <option value="" disabled selected>--- Select Employee ---</option>
+                                    {% for employee in employees %}
+                                        <option value="{{ employee.employee_name }}">{{ employee.employee_id }}----{{ employee.employee_name }}</option>
+                                    {% endfor %}
+                                </select>
+                        </div>
+                    </div>
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label for="basic" class="form-label text-dark">Basic<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="basic" name="basic" step="0.01" pattern="^\d+(\.\d{1,2})?$" title="Enter a valid decimal number with up to two decimal places" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="hra" class="form-label text-dark">HRA<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="hra" name="hra"  step="0.01" pattern="^\d+(\.\d{1,2})?$" title="Enter a valid decimal number with up to two decimal places" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="others" class="form-label text-dark">Others<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="others" name="others"  step="0.01" pattern="^\d+(\.\d{1,2})?$" title="Enter a valid decimal number with up to two decimal places" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="conv" class="form-label">Conv.<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control text-dark" id="conv" name="conv"  step="0.01" pattern="^\d+(\.\d{1,2})?$" title="Enter a valid decimal number with up to two decimal places" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="maxEpfWages" class="form-label text-dark">MAX EPF Wages<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="maxEpfWages"  name="maxEpfWages" required value ="15,000">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="maxEsiWages" class="form-label text-dark">MAX ESI Wages<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="maxEsiWages"  name="maxEsiWages" required value ="21,000">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="lta" class="form-label text-dark">LTA<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="lta" name="lta"  step="0.01" pattern="^\d+(\.\d{1,2})?$" title="Enter a valid decimal number with up to two decimal places" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="medical" class="form-label text-dark">Medical<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="medical" name="medical"  step="0.01" pattern="^\d+(\.\d{1,2})?$" title="Enter a valid decimal number with up to two decimal places" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="restAllow" class="form-label text-dark">Rest. Allow<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="restAllow" name="restAllow"  step="0.01" pattern="^\d+(\.\d{1,2})?$" title="Enter a valid decimal number with up to two decimal places" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="grossSalary" class="form-label text-dark">Gross Salary<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="grossSalary"placeholder="0" name="grossSalary" required readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="netPay" class="form-label text-dark">Net Pay<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="netPay" placeholder="0.0"name="netPay" required readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="ctc" class="form-label text-dark">CTC<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="ctc"placeholder="0" name="ctc" required readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="employeeEpf" class="form-label text-dark">Employee EPF<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="employeeEpf"placeholder="0" name="employeeEpf" required readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="employeeEsi" class="form-label text-dark">Employee ESI<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="employeeEsi"placeholder="0.0" name="employeeEsi" required readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="employerEpf" class="form-label text-dark">Employer EPF<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="employerEpf" placeholder="0"name="employerEpf" required readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="employerEsi" class="form-label text-dark">Employer ESI<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="employerEsi" placeholder="0.0" name="employerEsi" required readonly>
+                                </div>
+                            </div>
+                            <!-- Other calculated fields and hidden fields for IDs or additional data -->
+                            <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <script>
+        // Function to perform calculations and update read-only fields
+        function calculateValues() {
+            
+            const basic = parseFloat(document.getElementById('basic').value);
+            const hra = parseFloat(document.getElementById('hra').value);
+            const others = parseFloat(document.getElementById('others').value);
+            
+            
+            
+            const grossSalary = basic + hra + others; 
+            const netPay = grossSalary - deductions; 
+            const ctc = grossSalary + benefits; 
+            const employeeEpf = calculateEmployeeEpf(); 
+            const employeeEsi = calculateEmployeeEsi(); 
+            const employerEpf = calculateEmployerEpf(); 
+            const employerEsi = calculateEmployerEsi(); 
+            // Update read-only fields with calculated values
+            document.getElementById('grossSalary').value = grossSalary.toFixed(2);
+            document.getElementById('netPay').value = netPay.toFixed(2);
+            document.getElementById('ctc').value = ctc.toFixed(2);
+            document.getElementById('employeeEpf').value = employeeEpf.toFixed(2);
+            document.getElementById('employeeEsi').value = employeeEsi.toFixed(2);
+            document.getElementById('employerEpf').value = employerEpf.toFixed(2);
+            document.getElementById('employerEsi').value = employerEsi.toFixed(2);
+        }
+    
+        // Add event listener for form submission to perform calculations before submitting
+        document.getElementById('salaryForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            calculateValues(); // Calculate values before form submission
+            this.submit(); // Submit the form after calculations
+        });
+    </script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.dropdown-submenu a.dropdown-toggle').on("click", function(e){
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .nav-link:hover {
+            
+            color: red!important; /* Change to your desired text color on hover */
+      } 
+      .nav-link{
+          
+          font-weight: bold !important;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       
+          font-size: 1.3rem!important;
+      }
+
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Employee Registration Form</title>
+   
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-color py-4 pt-lg-5">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="#">
+                <img src="https://gvitechnology.com/images/logo.png" style="width: 100px; height: 50px;" alt="Logo">
+            </a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler"
+                    data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link text-primary dropdown-toggle" href="#" role="button" id="navbarDropdownMIS"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                MIS
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMIS">
+                                <li><a class="dropdown-item" href=""></a></li>
+                                <li><a class="dropdown-item" href=""></a></li>
+                                <li><a class="dropdown-item" href=""></a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+            
+                    <li class="nav-item ms-3">
+                        <div class="dropdown">
+                            <a class="nav-link text-primary dropdown-toggle" href="#" role="button" id="navbarDropdownPayRoll"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Pay Roll
+                            </a>
+               
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownPayRoll">
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#"><i class="fa-regular fa-calendar-days"></i> Holidays</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'create_holidays' %}">Create Holidays</a></li>
+                                        <li><a class="dropdown-item" href="#">Holidays List</a></li>
+                                        <li><a class="dropdown-item" href="#">Employee Holidays</a></li>
+                                        <!-- Add more options as needed -->
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                        <i class="fas fa-light fa-stopwatch"></i> Time Sheets
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'attendance_process' %}">Process Attendance</a></li>
+                                        <li><a class="dropdown-item" href="#">Attendance Approval</a></li>
+                                        <!-- Add more options as needed -->
+                                    </ul>
+                                </li>
+                                
+                            
+                                <li><a class="dropdown-item" href="">Salary</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li class="nav-item ms-3"> 
+                        <div class="dropdown">
+                            <a class="nav-link text-primary dropdown-toggle" href="#" role="button" id="navbarDropdownEmployees"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-users"></i> Employees
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownEmployees">
+                                <li><a class="dropdown-item" href="{% url 'emp_det' %}"><i class="fa-solid fa-user-plus"></i> Create Employee</a></li>
+                                <li><a class="dropdown-item" href="{% url 'empemployee_list' %}"><i class="fa-solid fa-list"></i> Employee List</a></li>
+                                <li><a class="dropdown-item" href="{% url 'add_salary' %}"><i class="fa-solid fa-comments-dollar"></i> Employee Salary</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                  
+                    <li class="nav-item ms-3"> 
+                        <div class="dropdown">
+                            <a class="nav-link text-primary dropdown-toggle" href="#" role="button" id="navbarDropdownReports"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Reports
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownReports">
+                                <li><a class="dropdown-item" href="">Employee Report</a></li>
+                                <li><a class="dropdown-item" href="">Holidays Report</a></li>
+                                <li><a class="dropdown-item" href="">Salary Report</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                   
+    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+   
+    
+
+                        
+                        <div class="container mt-4">
+                            <div class="card shadow-lg rounded">
+                                <div class="card-body shadow">
+                                    <h5 class="card-title text-center mb-4">Employee Registration</h5>
+                                    <hr>
+                                    <form method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                       
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="emp_name" class="form-label">Employee Name</label>
+                                            <input type="text" id="emp_name" name="emp_name" class="form-control" placeholder="Enter your name" required>
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="emp_designation" class="form-label">Employee Designation</label>
+                                            <input type="text" id="emp_designation" name="emp_designation" class="form-control" placeholder="Designation" required>
+                                        </div>
+                                    </div>
+                                    </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="emp_num" class="form-label">Phone Number</label>
+                                                    <input type="text" id="emp_num" name="emp_num" class="form-control" pattern="[0-9]{10}" placeholder="Enter 10-digit phone number" required>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="emp_email" class="form-label">Email ID</label>
+                                                    <input type="email" id="emp_email" name="emp_email" class="form-control" placeholder="Enter your email" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="emp_address" class="form-label">Address</label>
+                                            <input type="text" id="emp_address" name="emp_address" class="form-control" placeholder="Address" required>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">State</label>
+                                                   
+                                                        <select class="form-control" id="state" name="emp_state">
+                                                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                            <option value="Assam">Assam</option>
+                                                            <option value="Bihar">Bihar</option>
+                                                            <option value="Chandigarh">Chandigarh</option>
+                                                            <option value="Chhattisgarh">Chhattisgarh</option>
+                                                            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                                            <option value="Delhi (National Capital Territory of Delhi)">Delhi</option>
+                                                            <option value="Goa">Goa</option>
+                                                            <option value="Gujarat">Gujarat</option>
+                                                            <option value="Haryana">Haryana</option>
+                                                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                            <option value="Jharkhand">Jharkhand</option>
+                                                            <option value="Karnataka">Karnataka</option>
+                                                            <option value="Kerala">Kerala</option>
+                                                            <option value="Lakshadweep">Lakshadweep</option>
+                                                            <option value="Ladakh">Ladakh</option>
+                                                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                            <option value="Maharashtra">Maharashtra</option>
+                                                            <option value="Manipur">Manipur</option>
+                                                            <option value="Meghalaya">Meghalaya</option>
+                                                            <option value="Mizoram">Mizoram</option>
+                                                            <option value="Nagaland">Nagaland</option>
+                                                            <option value="Odisha">Odisha</option>
+                                                            <option value="Puducherry">Puducherry</option>
+                                                            <option value="Punjab">Punjab</option>
+                                                            <option value="Rajasthan">Rajasthan</option>
+                                                            <option value="Sikkim">Sikkim</option>
+                                                            <option value="Tamil Nadu">Tamil Nadu</option>
+                                                            <option value="Telangana">Telangana</option>
+                                                            <option value="Tripura">Tripura</option>
+                                                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                            <option value="Uttarakhand">Uttarakhand</option>
+                                                            <option value="West Bengal">West Bengal</option>
+                                                      
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="emp_city" class="form-label">City</label>
+                                                    <input type="text" id="emp_city" name="emp_city" class="form-control" placeholder="Enter your city name" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="emp_pincode" class="form-label">Pincode</label>
+                                                    <input type="text" id="emp_pincode" name="emp_pincode" class="form-control" pattern="[0-9]{6}" placeholder="Enter 6-digit Pincode" required>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="emp_salary" class="form-label">Salary (per Annum)</label>
+                                                    <input type="number" id="emp_salary" name="emp_salary" class="form-control" step="0.01" placeholder="Salary per Annum" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="emp_field" class="form-label">Employee Field</label>
+                                                    <input type="text" id="emp_field" name="emp_field" class="form-control" placeholder="Field" required>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="profile_image" class="form-label">Profile Image</label>
+                                                    <input type="file" id="profile_image" name="emp_image" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-primary col-md-12">Register</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div></div></div>
+                
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $('.dropdown-submenu a.dropdown-toggle').on("click", function(e){
+                        $(this).next('ul').toggle();
+                        e.stopPropagation();
+                        e.preventDefault();
+                    });
+                });
+            </script>
+                 
+
+    <!-- Bootstrap JS and Popper.js (optional) -->
+ 
+</body>
+</html>
